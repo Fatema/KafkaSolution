@@ -10,10 +10,10 @@ public class CassandraSparkConnect {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf(true).set("spark.cassandra.connection.host", "localhost");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<Finance> cassandraRdd = CassandraJavaUtil.javaFunctions(sc).cassandraTable("finance", "highdata",
+        JavaRDD<Finance> cassandraRdd = CassandraJavaUtil.javaFunctions(sc).cassandraTable("finance",
+                "historicaldata",
                 mapRowTo(Finance.class));
-
-
+        System.out.println(cassandraRdd.first());
     }
 
     private class Finance {
@@ -26,5 +26,20 @@ public class CassandraSparkConnect {
         public float open;
         public float adjclose;
         public float volume;
+
+        @Override
+        public String toString() {
+            return "Finance{" +
+                    "id=" + id +
+                    ", company='" + company + '\'' +
+                    ", date=" + date +
+                    ", high=" + high +
+                    ", low=" + low +
+                    ", close=" + close +
+                    ", open=" + open +
+                    ", adjclose=" + adjclose +
+                    ", volume=" + volume +
+                    '}';
+        }
     }
 }

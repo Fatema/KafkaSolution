@@ -41,11 +41,6 @@
             <version>1.8.2</version>
         </dependency>
         <dependency>
-            <groupId>io.confluent</groupId>
-            <artifactId>kafka-avro-serializer</artifactId>
-            <version>${confluent.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.datamountaineer</groupId>
             <artifactId>kafka-connect-cli</artifactId>
             <version>1.0.1</version>
