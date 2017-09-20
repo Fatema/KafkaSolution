@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS ms
 
 .mode csv
 
-.import /Users/FatemaK/Desktop/BigData_Project/FakeData/AAPL.csv tmp
+.import FakeData/AAPL.csv tmp
 
 INSERT INTO apple (date, open, high, low, close, adjclose, volume,company) SELECT *, 'apple' FROM
   tmp WHERE NOT date='Date';
@@ -62,7 +62,7 @@ UPDATE apple SET date = date || ' 11:09:00.123';
 
 DELETE FROM tmp;
 
-.import /Users/FatemaK/Desktop/BigData_Project/FakeData/CSCO.csv tmp
+.import FakeData/CSCO.csv tmp
 
 INSERT INTO csco (date, open, high, low, close, adjclose, volume,company) SELECT *, 'csco' FROM
   tmp WHERE NOT date='Date';
@@ -71,7 +71,7 @@ UPDATE csco SET date = date || ' 11:09:00.123';
 
 DELETE FROM tmp;
 
-.import /Users/FatemaK/Desktop/BigData_Project/FakeData/MSFT.csv tmp
+.import FakeData/MSFT.csv tmp
 
 INSERT INTO ms (date, open, high, low, close, adjclose, volume,company) SELECT *, 'ms' FROM
   tmp WHERE NOT date='Date';
