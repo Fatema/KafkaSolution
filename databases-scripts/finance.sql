@@ -51,9 +51,16 @@ CREATE TABLE IF NOT EXISTS ms
   UNIQUE (id, company)
 );
 
+DELETE FROM csco;
+delete from sqlite_sequence where name='csco';
+DELETE FROM apple;
+delete from sqlite_sequence where name='apple';
+DELETE FROM ms;
+delete from sqlite_sequence where name='ms';
+
 .mode csv
 
-.import FakeData/AAPL.csv tmp
+.import fake-data/AAPL.csv tmp
 
 INSERT INTO apple (date, open, high, low, close, adjclose, volume,company) SELECT *, 'apple' FROM
   tmp WHERE NOT date='Date';
@@ -62,7 +69,7 @@ UPDATE apple SET date = date || ' 11:09:00.123';
 
 DELETE FROM tmp;
 
-.import FakeData/CSCO.csv tmp
+.import fake-data/CSCO.csv tmp
 
 INSERT INTO csco (date, open, high, low, close, adjclose, volume,company) SELECT *, 'csco' FROM
   tmp WHERE NOT date='Date';
@@ -71,7 +78,7 @@ UPDATE csco SET date = date || ' 11:09:00.123';
 
 DELETE FROM tmp;
 
-.import FakeData/MSFT.csv tmp
+.import fake-data/MSFT.csv tmp
 
 INSERT INTO ms (date, open, high, low, close, adjclose, volume,company) SELECT *, 'ms' FROM
   tmp WHERE NOT date='Date';
