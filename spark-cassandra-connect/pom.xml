@@ -22,34 +22,6 @@
             <artifactId>scala-library</artifactId>
             <version>2.13.0-M2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core -->
-        <dependency>
-            <groupId>com.datastax.cassandra</groupId>
-            <artifactId>cassandra-driver-core</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams -->
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>0.10.0.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.avro/avro -->
-        <dependency>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro</artifactId>
-            <version>1.8.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.datamountaineer</groupId>
-            <artifactId>kafka-connect-cli</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>0.10.0.1</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector_2.10 -->
         <dependency>
             <groupId>com.datastax.spark</groupId>
