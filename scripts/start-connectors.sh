@@ -10,7 +10,7 @@ echo '<----- creating keyspace and a table in cassandra --->'
 cqlsh -u 'cassandra' -p 'cassandra' -f cql-scripts/HistoricalData.cql
 
 # add the sink or source to the connectors list / can use a POST request to http://localhost:8083/connectors for this
-echo '<----- adding jdbc-kafka source --->'
+echo '<----- adding sqlite-kafka source --->'
 java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-source-sqlite < ${DIR}/../configs/finance-source-sqlite.properties &
 
 echo '<----- adding cassandra-kafka sink --->'

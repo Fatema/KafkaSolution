@@ -11,7 +11,7 @@ echo '<----- closing schema registry --->'
 sleep 10 && ${CONFLUENT_HOME}/bin/schema-registry-stop ${CONFLUENT_HOME}/etc/schema-registry/schema-registry.properties &
 
 echo '<----- closing zookeeper --->'
-sleep 20 && ${CONFLUENT_HOME}/bin/zookeeper-server-stop ${CONFLUENT_HOME}/etc/kafka/zookeeper.properties &
+sleep 60 && ${CONFLUENT_HOME}/bin/zookeeper-server-stop ${CONFLUENT_HOME}/etc/kafka/zookeeper.properties &
 
 echo '<----- closing cassandra --->'
 sleep 10 && pgrep -u FatemaK -f cassandra | xargs kill -9 &
