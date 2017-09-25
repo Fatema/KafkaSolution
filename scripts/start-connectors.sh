@@ -13,10 +13,17 @@ echo '<----- creating topics --->'
 kafka-topics --create --topic finance-sqlite-apple --zookeeper localhost:2181 --replication-factor 3 --partitions 3
 kafka-topics --create --topic finance-sqlite-ms --zookeeper localhost:2181 --replication-factor 3 --partitions 3
 kafka-topics --create --topic finance-sqlite-csco --zookeeper localhost:2181 --replication-factor 3 --partitions 3
+kafka-topics --create --topic finance-sqlite-apple-selected --zookeeper localhost:2181 --replication-factor 3 --partitions 3
 
 # add the sink or source to the connectors list / can use a POST request to http://localhost:8083/connectors for this
 echo '<----- adding sqlite-kafka source --->'
-java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-source-sqlite < ${DIR}/../configs/finance-source-sqlite.properties &
+java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-source-sqlite < ${DIR}/../configs/finance-source-sqlite.properties
+sleep 40 & java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-source-sqlite-apple-selected < ${DIR}/../configs/finance-source-sqlite-apple-selected.properties
 
 echo '<----- adding cassandra-kafka sink --->'
-sleep 20 & java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-sink-cassandra < ${DIR}/../configs/finance-sink-cassandra.properties &
+sleep 40 & java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-sink-cassandra < ${DIR}/../configs/finance-sink-cassandra.properties
+sleep 40 & java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-sink-cassandra-ms < ${DIR}/../configs/finance-sink-cassandra-ms.properties
+sleep 40 & java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar create finance-sink-cassandra-apple-selected < ${DIR}/../configs/finance-sink-cassandra-apple-selected.properties
+
+java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar run finance-source-sqlite < ${DIR}/../configs/finance-source-sqlite.properties
+sleep 40 & java -jar ${DIR}/../libs/kafka-connect-cli-1.0-all.jar run finance-source-sqlite-apple-selected < ${DIR}/../configs/finance-source-sqlite-apple-selected.properties

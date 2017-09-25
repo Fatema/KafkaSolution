@@ -31,5 +31,8 @@ for jar in ${DIR}/../libs/*.jar; do
     CLASSPATH=${CLASSPATH}:${jar}
 done
 export CLASSPATH
+
 echo '<----- starting kafka connect worker in distributed mode --->'
 sleep 10 && ${CONFLUENT_HOME}/bin/connect-distributed ${CONFLUENT_HOME}/etc/schema-registry/connect-avro-distributed.properties &
+
+export KAFKA_CONNECT_REST=http://localhost:8083
