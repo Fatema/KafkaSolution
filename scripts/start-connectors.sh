@@ -7,7 +7,10 @@ sqlite3 finance.db < ${DIR}/../database-scripts/finance.sql
 
 #create a keyspace and a table in cassandara
 echo '<----- creating keyspace and a table in cassandra --->'
-cqlsh -u 'cassandra' -p 'cassandra' -f cql-scripts/HistoricalData.cql
+cqlsh -u 'cassandra' -p 'cassandra' -f ${DIR}/../database-scripts/HistoricalData.cql
+
+echo '<----- creating topics --->'
+
 
 # add the sink or source to the connectors list / can use a POST request to http://localhost:8083/connectors for this
 echo '<----- adding sqlite-kafka source --->'
